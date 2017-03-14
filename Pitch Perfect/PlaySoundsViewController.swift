@@ -21,7 +21,6 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     
     // MARK: Properties
-    
     var recordedAudioURL: URL!
     var audioFile:AVAudioFile!
     var audioEngine:AVAudioEngine!
@@ -34,6 +33,7 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Setup AudioFile and UI for NotPlaying state
         setupAudio()
         configureUI(.notPlaying)
     }
@@ -56,12 +56,12 @@ class PlaySoundsViewController: UIViewController {
         case .reverb:
             playSound(reverb: true)
         }
-     
-        configureUI(.playing)
         
+        configureUI(.playing)
     }
     
     @IBAction func stopButtonPressed(_ sender:UIButton) {
+        
         stopAudio()
         configureUI(.notPlaying)
     }
